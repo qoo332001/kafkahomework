@@ -17,7 +17,7 @@ public class kafkahw {
         String s="";
         Headers headers = new RecordHeaders();
         for (int j=1;j<= Integer.parseInt(argument.recordSize)/2;j++)
-            if (j>30/2)
+            if (j>95/2)
                 s+="0";
 
         headers.add(s,s.getBytes());
@@ -43,8 +43,8 @@ public class kafkahw {
         }
         Properties props = new Properties();
         props.put("bootstrap.servers", a.broker);
-        props.put("batch.size", 10240);
-        props.put("buffer.memory", 10240*10240);
+        props.put("batch.size", 10000);
+        props.put("buffer.memory", 10000*10000);
         props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         Producer producer = new KafkaProducer(props);
