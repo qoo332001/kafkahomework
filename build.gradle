@@ -1,0 +1,25 @@
+plugins {// Apply the application plugin to add support for building a CLI application in Java.
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '7.1.0'
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.apache.kafka:kafka_2.12:2.8.1"
+    implementation "com.beust:jcommander:1.81"
+}
+application {
+    // Define the main class for the application.
+    mainClass = 'org.example.kafkahw'
+    applicationDefaultJvmArgs = ["-server", "-XX:+UseG1GC", "-Djava.awt.headless=true", "-Xms4G", "-Xmx4G"]
+}
+test {
+    useJUnitPlatform()
+}
